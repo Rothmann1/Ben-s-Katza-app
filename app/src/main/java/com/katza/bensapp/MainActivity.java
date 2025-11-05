@@ -11,6 +11,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -18,7 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     SeekBar seekBar;
-    CompoundButton sw1;
+    Switch sw1;
     View img1;
 
     @Override
@@ -55,28 +56,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // נקרא כאשר המשתמש מתחיל לגעת ב-SeekBar
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(MainActivity.this, "Hi", Toast.LENGTH_SHORT).show();            }
+                Toast.makeText(MainActivity.this, "Hi", Toast.LENGTH_SHORT).show();
+            }
 
             // נקרא כאשר המשתמש עוזב את ה-SeekBar
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(MainActivity.this, "Bye", Toast.LENGTH_SHORT).show();            }
+                Toast.makeText(MainActivity.this, "Bye", Toast.LENGTH_SHORT).show();
+            }
         });
         img1.setAlpha(0.0f);
         seekBar.setProgress(0);
-    }
-//        sw1 = findViewById(R.id.switch1);
-//        sw1.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttomView, boolean isChecked) {
-//                if (isChecked) {
-//                    img1.setAlpha(1f);
-//                } else {
-//                    img1.setAlpha(0f);
-//                }
-//            }
-//        });
 
+        sw1 = findViewById(R.id.switch1);
+        sw1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(@NonNull CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    img1.setAlpha(1f);
+                } else {
+                    img1.setAlpha(0f);
+                }
+            }
+        });
+    }
     @Override
     public void onClick(View v) {
 
