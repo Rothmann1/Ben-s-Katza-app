@@ -27,7 +27,7 @@ public class MainActivity2 extends AppCompatActivity {
         });
 
         iv = new ImageView(this);
-        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(1000,1000);
+        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(500,500);
         iv.setLayoutParams(layoutParams);
 
         main = (ConstraintLayout)findViewById(R.id.main);
