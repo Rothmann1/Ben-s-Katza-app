@@ -40,7 +40,7 @@ public class MainActivity2 extends AppCompatActivity {
         Dialog d;
         btnSave = findViewById(R.id.btnSave);
         display = findViewById(R.id.display);
-        sp = getSharedPreferences("spBen",0);
+        sp = getSharedPreferences("SPBen",0);
         String nameDisplay = sp.getString("name",null);
         if (nameDisplay != null) display.setText("Hello " + nameDisplay);
         btnSave.setOnClickListener(new View.OnClickListener() {
