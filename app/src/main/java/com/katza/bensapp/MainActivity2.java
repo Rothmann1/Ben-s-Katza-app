@@ -1,7 +1,14 @@
 package com.katza.bensapp;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +19,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    ImageView iv;
+    SharedPreferences sp;
+    Button btnSave;
+    EditText name;
+    TextView display;
     ConstraintLayout main;
 
     @Override
@@ -26,12 +36,32 @@ public class MainActivity2 extends AppCompatActivity {
             return insets;
         });
 
-        iv = new ImageView(this);
-        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(100,100);
-        iv.setLayoutParams(layoutParams);
 
-        main = (ConstraintLayout)findViewById(R.id.main);
-        iv.setImageResource(R.drawable.download);
-        main.addView(iv);
+        Dialog d;
+        btnSave = findViewById(R.id.btnSave);
+        display = findViewById(R.id.display);
+        sp = getSharedPreferences("spBen",0);
+        String nameDisplay = sp.getString("name",null);
+        if (nameDisplay != null) display.setText("Hello " + nameDisplay);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("name", name.getText().toString());
+                editor.commit();
+                createDialog();
+            }
+        });
+        name = findViewById(R.id.name);
+
+
+    }
+
+    public void createDialog() {
+        Dialog d = new Dialog(this);
+        d.setContentView(R.layout.dialog);
+        d.setTitle("title");
+        d.setCancelable(true);
+        d.show();
     }
 }
