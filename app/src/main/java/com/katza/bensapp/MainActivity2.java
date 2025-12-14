@@ -1,5 +1,6 @@
 package com.katza.bensapp;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -24,7 +25,9 @@ public class MainActivity2 extends AppCompatActivity {
     EditText name;
     TextView display;
     ConstraintLayout main;
+    Button btnShow;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +44,17 @@ public class MainActivity2 extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
         display = findViewById(R.id.display);
         sp = getSharedPreferences("SPBen",0);
-        String nameDisplay = sp.getString("name",null);
-        if (nameDisplay != null) display.setText("Hello " + nameDisplay);
+        btnShow = findViewById(R.id.btnShow);
+
+        btnShow.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String nameDisplay = sp.getString("name",null);
+                if (nameDisplay != null) display.setText("Hello " + nameDisplay);
+            }
+        });
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
