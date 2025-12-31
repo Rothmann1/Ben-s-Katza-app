@@ -1,6 +1,8 @@
 package com.katza.bensapp;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -33,8 +35,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return insets;
         });
         initViews();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
 
+        int id = item.getItemId();
+
+        if (id == R.id.action_page_one) Toast.makeText(this,"Page 1", Toast.LENGTH_SHORT).show();
+        if (id == R.id.action_page_two) Toast.makeText(this,"Page 2", Toast.LENGTH_SHORT).show();
+        return true;
     }
     
     private void initViews() {
