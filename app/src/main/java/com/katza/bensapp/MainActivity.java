@@ -1,7 +1,9 @@
 package com.katza.bensapp;
 
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +38,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         initViews();
     }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu,View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_main, menu);
+    }
+
+    public boolean onContextItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_option_one) Toast.makeText(this,"Option 1", Toast.LENGTH_SHORT).show();
+        if (id == R.id.action_option_two) Toast.makeText(this,"Option 2", Toast.LENGTH_SHORT).show();
+        return true;
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -54,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     
     private void initViews() {
         img1 = findViewById(R.id.imageView);
+        registerForContextMenu(img1);
         seekBar = findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
