@@ -1,5 +1,6 @@
 package com.katza.bensapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -67,8 +68,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         int id = item.getItemId();
 
-        if (id == R.id.action_page_one) Toast.makeText(this,"Page 1", Toast.LENGTH_SHORT).show();
-        if (id == R.id.action_page_two) Toast.makeText(this,"Page 2", Toast.LENGTH_SHORT).show();
+        if (id == R.id.action_page_one) {
+            Intent intent = new Intent
+                    (this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        if (id == R.id.action_page_two) {
+            Intent intent = new Intent
+                    (this, MainActivity2.class);
+            startActivity(intent);
+            finish();
+        }
         return true;
     }
     
