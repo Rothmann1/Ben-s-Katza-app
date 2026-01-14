@@ -12,11 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BensApp">
         <activity
+            android:name=".ActivitySecond"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityFirst"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity2"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
