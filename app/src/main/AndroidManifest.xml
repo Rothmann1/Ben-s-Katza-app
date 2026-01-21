@@ -12,21 +12,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BensApp">
         <activity
-            android:name=".ActivitySecond"
-            android:exported="false" />
-        <activity
-            android:name=".ActivityFirst"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".IntentFilterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivitySecond"
+            android:exported="true" />
+        <activity
+            android:name=".ActivityFirst"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="com.katza.ACTION_OPEN_SCREEN_TYPE_B"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+    </activity>
+        <activity
+            android:name=".MainActivity2"
+            android:exported="true">
+            <intent-filter>
+             <action android:name="com.katza.ACTION_OPEN_SCREEN_TYPE_A"/>
+             <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.katza.ACTION_OPEN_SCREEN_TYPE_A"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
     </application>
