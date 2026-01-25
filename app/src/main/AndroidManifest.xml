@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BensApp">
         <activity
-            android:name=".IntentFilterActivity"
+            android:name=".camera"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,33 +23,45 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".IntentFilterActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ActivitySecond"
             android:exported="true" />
         <activity
             android:name=".ActivityFirst"
             android:exported="true">
-        <intent-filter>
-            <action android:name="com.katza.ACTION_OPEN_SCREEN_TYPE_B"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-        </intent-filter>
-    </activity>
+            <intent-filter>
+                <action android:name="com.katza.ACTION_OPEN_SCREEN_TYPE_B" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity2"
             android:exported="true">
             <intent-filter>
-             <action android:name="com.katza.ACTION_OPEN_SCREEN_TYPE_A"/>
-             <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.katza.ACTION_OPEN_SCREEN_TYPE_A" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.katza.ACTION_OPEN_SCREEN_TYPE_A"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.katza.ACTION_OPEN_SCREEN_TYPE_A" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
+
 
 </manifest>
